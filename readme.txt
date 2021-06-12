@@ -1,8 +1,8 @@
-=== Hyper Cache ===
+=== Hyper Cache Tweaks ===
 Tags: cache,performance,staticizer,apache,htaccess,tuning,speed,bandwidth,optimization,tidy,gzip,compression,server load,boost
 Requires at least: 3.9
 Tested up to: 5.2.2
-Stable tag: 3.3.9
+Stable tag: 3.3.9-tweaks-1
 Donate link: https://www.satollo.net/donations
 Contributors: satollo
 
