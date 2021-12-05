@@ -13,7 +13,7 @@
 
 new HyperCache();
 
-class plugin
+class HyperCache
 {
     public $post_id;
     public $options;
@@ -654,6 +654,10 @@ function hyper_cache_callback($buffer)
 
             return $buffer;
         }
+    }
+
+    if (!isset($GLOBALS['hyper_cache_group'])) {
+        $GLOBALS['hyper_cache_group'] = '';
     }
 
     if (is_404()) {

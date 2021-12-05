@@ -257,11 +257,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
         </div>
     <?php } ?>
 
-
-
-
     <?php $controls->show(); ?>
-
 
     <form method="post" action="">
         <?php $controls->init(); ?>
@@ -380,7 +376,6 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                         </td>
                     </tr>
 
-
                     <tr valign="top">
                         <th><?php _e('HTTPS', 'hyper-cache-tweaks'); ?></th>
                         <td>
@@ -392,7 +387,6 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                             </p>
                         </td>
                     </tr>
-
 
                     <tr>
                         <th><?php _e('Serve expired pages to bots', 'hyper-cache-tweaks'); ?></th>
@@ -654,7 +648,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
 
 <?php
 
-class options
+class HyperCacheControls
 {
     public $options = null;
     public $errors = null;
