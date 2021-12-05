@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-06-12T10:31:29+00:00\n"
+"POT-Creation-Date: 2021-12-05T07:59:44+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: hyper-cache-tweaks\n"
@@ -120,13 +120,13 @@ msgid "It works only with images, css, scripts."
 msgstr ""
 
 #: options.php:301
-#: options.php:378
-#: options.php:405
-#: options.php:463
-#: options.php:476
-#: options.php:490
-#: options.php:501
-#: options.php:513
+#: options.php:373
+#: options.php:400
+#: options.php:458
+#: options.php:471
+#: options.php:485
+#: options.php:496
+#: options.php:508
 msgid "Enable"
 msgstr ""
 
@@ -166,295 +166,295 @@ msgstr ""
 msgid "If your server has mod_pagespeed, leave the compression disabled otherwise the module cannot optimize the page."
 msgstr ""
 
-#: options.php:361
+#: options.php:359
 msgid "When a post is edited"
 msgstr ""
 
-#: options.php:376
+#: options.php:371
 msgid "Allow browser caching"
 msgstr ""
 
-#: options.php:382
+#: options.php:377
 msgid "Lets browser to use a local copy of the page if newer than specified."
 msgstr ""
 
-#: options.php:383
+#: options.php:378
 msgid "Attention: the browser may not reload a page from the blog showing not updated content. "
 msgstr ""
 
-#: options.php:390
+#: options.php:385
 msgid "HTTPS"
 msgstr ""
 
-#: options.php:392
-#: options.php:606
+#: options.php:387
+#: options.php:601
 msgid "Bypass the cache"
 msgstr ""
 
-#: options.php:393
+#: options.php:388
 msgid "Build a separated cache"
 msgstr ""
 
-#: options.php:394
+#: options.php:389
 msgid "Use the standard cache (I have HTTP/HTTPS aware pages)"
 msgstr ""
 
-#: options.php:396
+#: options.php:391
 msgid "Pages are usually different when served in HTTP and HTTPS."
 msgstr ""
 
-#: options.php:403
+#: options.php:398
 msgid "Serve expired pages to bots"
 msgstr ""
 
-#: options.php:407
+#: options.php:402
 msgid "Serve a cache page even if expired when requested by bots."
 msgstr ""
 
-#: options.php:418
+#: options.php:413
 msgid "Do not cache the home page"
 msgstr ""
 
-#: options.php:422
+#: options.php:417
 msgid "When active, the home page and its subpages are not cached."
 msgstr ""
 
-#: options.php:423
+#: options.php:418
 msgid "Works even with a static home page."
 msgstr ""
 
-#: options.php:428
+#: options.php:423
 msgid "Do not cache the \"404 - Not found\" page"
 msgstr ""
 
-#: options.php:432
+#: options.php:427
 msgid "When active, Hyper Cache does not serve a cached \"404 not found\" page."
 msgstr ""
 
-#: options.php:433
+#: options.php:428
 msgid "Requests which lead to a 404 not found page overload you blog since WordPress must generate a full page"
 msgstr ""
 
-#: options.php:434
+#: options.php:429
 msgid "Caching it help in reduce that overload."
 msgstr ""
 
-#: options.php:439
+#: options.php:434
 msgid "Do not cache the blog main feeds"
 msgstr ""
 
 #. translators: %s = home url
-#: options.php:445
+#: options.php:440
 msgid "When active, the main blog feed %s is not cached."
 msgstr ""
 
-#: options.php:451
+#: options.php:446
 msgid "Do not cache single post comment feed"
 msgstr ""
 
-#: options.php:455
+#: options.php:450
 msgid "When active, the single post comment feeds are not cached."
 msgstr ""
 
-#: options.php:456
+#: options.php:451
 msgid "Usually I enable this bypass since it saves disk space and comment feed on single posts are not usually used."
 msgstr ""
 
-#: options.php:461
+#: options.php:456
 msgid "Do not cache pages with URIs"
 msgstr ""
 
-#: options.php:466
-#: options.php:479
-#: options.php:493
-#: options.php:504
-#: options.php:637
+#: options.php:461
+#: options.php:474
+#: options.php:488
+#: options.php:499
+#: options.php:632
 msgid "One per line."
 msgstr ""
 
-#: options.php:467
+#: options.php:462
 msgid "Those URIs are exactly matched."
 msgstr ""
 
-#: options.php:468
-#: options.php:481
+#: options.php:463
+#: options.php:476
 msgid "For example if you add the <code>/my-single-post</code> URI and a request is received for <code>http://youblog.com<strong>/my-single-post</strong></code> that page IS NOT cached."
 msgstr ""
 
-#: options.php:469
+#: options.php:464
 msgid "A request for <code>http://youblog.com<strong>/my-single-post-something</strong></code> IS cached."
 msgstr ""
 
-#: options.php:474
+#: options.php:469
 msgid "Do not cache pages with URIs starting with"
 msgstr ""
 
-#: options.php:480
+#: options.php:475
 msgid "Those URIs match if a requested URI starts with one of them."
 msgstr ""
 
-#: options.php:483
+#: options.php:478
 msgid "A request for <code>http://youblog.com<strong>/my-single-post-something</strong></code> IS NOT cached as well."
 msgstr ""
 
-#: options.php:488
+#: options.php:483
 msgid "Bypass the cache for readers with cookies"
 msgstr ""
 
-#: options.php:494
+#: options.php:489
 msgid "If the visitor has a cookie named as one of the listed values, the cache is bypassed."
 msgstr ""
 
-#: options.php:499
+#: options.php:494
 msgid "Bypass the cache for readers with devices (user agents)"
 msgstr ""
 
-#: options.php:505
+#: options.php:500
 msgid "If the visitor has a device with a user agent named as one of the listed values, the cache is bypassed."
 msgstr ""
 
-#: options.php:511
+#: options.php:506
 msgid "Bypass the cache for readers which are commenters"
 msgstr ""
 
-#: options.php:516
+#: options.php:511
 msgid ""
 "Hyper Cache is able to work with users who left a comment and completes the comment form with\n"
 "                                user data even on cached page"
 msgstr ""
 
-#: options.php:518
+#: options.php:513
 msgid "(with a small JavaScript added at the end of the pages)."
 msgstr ""
 
-#: options.php:519
+#: options.php:514
 msgid "But the \"awaiting moderation\" message cannot be shown."
 msgstr ""
 
-#: options.php:520
+#: options.php:515
 msgid "If you have few readers who comment you can disable this feature to get back the classical WordPress comment flow."
 msgstr ""
 
-#: options.php:525
+#: options.php:520
 msgid "Do not cache posts older than"
 msgstr ""
 
-#: options.php:527
+#: options.php:522
 msgid "days"
 msgstr ""
 
-#: options.php:529
+#: options.php:524
 msgid "Older posts won't be cached and stored resulting in a lower disk space usage."
 msgstr ""
 
-#: options.php:530
+#: options.php:525
 msgid "Useful when older posts have low traffic."
 msgstr ""
 
-#: options.php:540
+#: options.php:535
 msgid "Enable on-the-fly compression"
 msgstr ""
 
-#: options.php:545
+#: options.php:540
 msgid "Enable on the fly compression for non cached pages."
 msgstr ""
 
-#: options.php:551
+#: options.php:546
 msgid "When a post receives a comment"
 msgstr ""
 
-#: options.php:563
+#: options.php:558
 msgid "When the home is refreshed, refresh even the"
 msgstr ""
 
-#: options.php:565
+#: options.php:560
 msgid "latest post"
 msgstr ""
 
-#: options.php:567
+#: options.php:562
 msgid "The number of latest posts to invalidate when the home is invalidated."
 msgstr ""
 
-#: options.php:573
+#: options.php:568
 msgid "Next autoclean will run in"
 msgstr ""
 
-#: options.php:577
+#: options.php:572
 msgid "will run again in"
 msgstr ""
 
-#: options.php:577
+#: options.php:572
 msgid "minutes"
 msgstr ""
 
-#: options.php:579
+#: options.php:574
 msgid "The autoclean process removes old files to save disk space."
 msgstr ""
 
-#: options.php:580
+#: options.php:575
 msgid "If you enable the \"serve expired pages to bots\", you should disable the auto clean."
 msgstr ""
 
-#: options.php:586
+#: options.php:581
 msgid "Cache folder"
 msgstr ""
 
-#: options.php:589
+#: options.php:584
 msgid "A custom cache folder is deinfed in wp-config.php"
 msgstr ""
 
-#: options.php:591
+#: options.php:586
 msgid "A custom cache folder can be defined in wp-config.php"
 msgstr ""
 
-#: options.php:602
+#: options.php:597
 msgid "For mobile devices"
 msgstr ""
 
-#: options.php:604
+#: options.php:599
 msgid "Use the main cache"
 msgstr ""
 
-#: options.php:605
+#: options.php:600
 msgid "Use a separated cache"
 msgstr ""
 
-#: options.php:609
+#: options.php:604
 msgid "Choose \"cache separately\" if you produce different content for mobile devices"
 msgstr ""
 
-#: options.php:610
+#: options.php:605
 msgid "See for example my <a href=\"http://www.satollo.net/plugins/header-footer\" target=\"_blank\">Header and Footer</a> plugin for different desktop/mobile ads injection in posts."
 msgstr ""
 
-#: options.php:615
+#: options.php:610
 msgid "Mobile theme"
 msgstr ""
 
-#: options.php:620
+#: options.php:615
 msgid "Use the active blog theme"
 msgstr ""
 
-#: options.php:627
+#: options.php:622
 msgid "If you have plugins which produce different content for desktop and mobile devices, you should use a separate cache for mobile."
 msgstr ""
 
-#: options.php:632
+#: options.php:627
 msgid "Mobile user agents"
 msgstr ""
 
-#: options.php:635
+#: options.php:630
 msgid "Reset"
 msgstr ""
 
-#: options.php:638
+#: options.php:633
 msgid "A \"user agent\" is a text which identify the kind of device used to surf the site."
 msgstr ""
 
-#: options.php:639
+#: options.php:634
 msgid "For example and iPhone has <code>iphone</code> as user agent."
 msgstr ""
 
-#: options.php:649
+#: options.php:644
 msgid "Save"
 msgstr ""

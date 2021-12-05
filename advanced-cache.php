@@ -72,7 +72,7 @@ if (!\function_exists('hyper_cache_ignoreqs')) {
 }
 
 if (!isset($_SERVER['HTTP_HOST'])) {
-    hyper_cache_header('stop - invalid host');
+    hyper_cache_header('miss - invalid host');
     $GLOBALS['hyper_cache_stop'] = true;
 
     return false;
@@ -80,7 +80,7 @@ if (!isset($_SERVER['HTTP_HOST'])) {
 
 // Use this only if you can't or don't want to modify the .htaccess
 if ('GET' != $_SERVER['REQUEST_METHOD']) {
-    hyper_cache_header('stop - non get');
+    hyper_cache_header('miss - invalid request method');
     $GLOBALS['hyper_cache_stop'] = true;
 
     return false;
@@ -100,7 +100,7 @@ $hyper_cache_gzip_accepted = isset($_SERVER['HTTP_ACCEPT_ENCODING']) && false !=
 $hyper_cache_is_bot = isset($_SERVER['HTTP_USER_AGENT']) && preg_match('#(googlebot)#i', $_SERVER['HTTP_USER_AGENT']);
 
 if (HC_MOBILE === 2 && $GLOBALS['hyper_cache_is_mobile']) {
-    hyper_cache_header('stop - mobile');
+    hyper_cache_header('miss - exclude mobile');
     $GLOBALS['hyper_cache_stop'] = true;
 
     return false;
@@ -108,32 +108,32 @@ if (HC_MOBILE === 2 && $GLOBALS['hyper_cache_is_mobile']) {
 
 if (!empty($_SERVER['QUERY_STRING'])) {
     if (hyper_cache_ignoreqs()) {
-        hyper_cache_header('stop - query string');
+        hyper_cache_header('miss - exclude query string');
         $GLOBALS['hyper_cache_stop'] = true;
 
         return false;
     }
 }
 
-if (\defined('SID') && '' != (string) SID) {
+if (\defined('SID') && '' !== (string) SID) {
     $GLOBALS['hyper_cache_stop'] = true;
 
     return false;
 }
 
-if (isset($_SERVER['HTTP_CACHE_CONTROL']) && 'no-cache' == $_SERVER['HTTP_CACHE_CONTROL']) {
-    hyper_cache_header('stop - no cache header');
+/*if (isset($_SERVER['HTTP_CACHE_CONTROL']) && 'no-cache' == $_SERVER['HTTP_CACHE_CONTROL']) {
+    hyper_cache_header('miss - no cache header');
     $GLOBALS['hyper_cache_stop'] = true;
 
     return false;
 }
 
 if (isset($_SERVER['HTTP_PRAGMA']) && 'no-cache' == $_SERVER['HTTP_PRAGMA']) {
-    hyper_cache_header('stop - no cache header');
+    hyper_cache_header('miss - no cache header');
     $GLOBALS['hyper_cache_stop'] = true;
 
     return false;
-}
+}*/
 
 // Used globally
 $hyper_cache_is_ssl = false;
@@ -149,7 +149,7 @@ if (isset($_SERVER['HTTPS'])) {
 }
 
 if (HC_HTTPS === 0 && $hyper_cache_is_ssl) {
-    hyper_cache_header('stop - https');
+    hyper_cache_header('miss - exclude https');
     $GLOBALS['hyper_cache_stop'] = true;
 
     return false;
@@ -157,7 +157,7 @@ if (HC_HTTPS === 0 && $hyper_cache_is_ssl) {
 
 if (HC_REJECT_AGENTS_ENABLED && isset($_SERVER['HTTP_USER_AGENT'])) {
     if (preg_match('#(HC_REJECT_AGENTS)#i', $_SERVER['HTTP_USER_AGENT'])) {
-        hyper_cache_header('stop - rejected user agent');
+        hyper_cache_header('miss - rejected user agent');
         $GLOBALS['hyper_cache_stop'] = true;
 
         return false;
@@ -167,21 +167,21 @@ if (HC_REJECT_AGENTS_ENABLED && isset($_SERVER['HTTP_USER_AGENT'])) {
 if (!empty($_COOKIE)) {
     foreach ($_COOKIE as $n => $v) {
         if ('wordpress_logged_in_' == substr($n, 0, 20)) {
-            hyper_cache_header('stop - logged in cookie');
+            hyper_cache_header('miss - logged in cookie');
             $GLOBALS['hyper_cache_stop'] = true;
 
             return false;
         }
 
         if ('wp-postpass_' == substr($n, 0, 12)) {
-            hyper_cache_header('stop - password cookie');
+            hyper_cache_header('miss - password cookie');
             $GLOBALS['hyper_cache_stop'] = true;
 
             return false;
         }
 
         if (HC_REJECT_COMMENT_AUTHORS && 'comment_author' == substr($n, 0, 14)) {
-            hyper_cache_header('stop - comment author cookie');
+            hyper_cache_header('miss - comment author cookie');
             $GLOBALS['hyper_cache_stop'] = true;
 
             return false;
@@ -189,7 +189,7 @@ if (!empty($_COOKIE)) {
 
         if (HC_REJECT_COOKIES_ENABLED) {
             if (preg_match('#(HC_REJECT_COOKIES)#i', $n)) {
-                hyper_cache_header('stop - rejected cookie');
+                hyper_cache_header('miss - rejected cookie');
                 $GLOBALS['hyper_cache_stop'] = true;
 
                 return false;
@@ -223,7 +223,7 @@ if ($hc_gzip) {
 }
 
 if (!is_file($hc_file)) {
-    hyper_cache_header('continue - no file');
+    hyper_cache_header('miss - no file');
 
     return false;
 }
@@ -234,7 +234,7 @@ if (HC_SERVE_EXPIRED_TO_BOT && $hyper_cache_is_bot) {
     hyper_cache_header('hit - bot');
 } else {
     if (HC_MAX_AGE > 0 && $hc_file_time < time() - (HC_MAX_AGE * 3600)) {
-        hyper_cache_header('continue - old file');
+        hyper_cache_header('miss - old file');
 
         return false;
     }
@@ -244,7 +244,7 @@ if (\array_key_exists('HTTP_IF_MODIFIED_SINCE', $_SERVER)) {
     if ($hc_if_modified_since >= $hc_file_time) {
         header('HTTP/1.0 304 Not Modified');
         flush();
-        die();
+        exit();
     }
 }
 

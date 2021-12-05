@@ -13,7 +13,7 @@
 
 new HyperCache();
 
-class HyperCache
+class plugin
 {
     public $post_id;
     public $options;
@@ -284,7 +284,7 @@ class HyperCache
             // Blog Pages (ERICH)
             if ((int) (get_option('page_for_posts')) > 0) {
                 $url = get_permalink(get_option('page_for_posts'));
-                $this->remove_dir($dir.parse_url($url, PHP_URL_PATH));
+                $this->remove_dir($dir.parse_url($url, \PHP_URL_PATH));
             }
         }
 
@@ -362,7 +362,7 @@ class HyperCache
                     // For some reason it seems more performant than readfile...
                     header('X-Cache: hit,404,wp');
                     echo file_get_contents($file);
-                    die();
+                    exit();
                 }
             }
         }
@@ -374,7 +374,11 @@ class HyperCache
             return;
         }
 
-        $home_root = parse_url(get_option('home'), PHP_URL_PATH);
+        if (!isset($GLOBALS['hyper_cache_stop'])) {
+            $GLOBALS['hyper_cache_stop'] = false;
+        }
+
+        $home_root = parse_url(get_option('home'), \PHP_URL_PATH);
 
         if (!empty($GLOBALS['hyper_cache_stop'])) {
             $GLOBALS['hyper_cache_stop'] = true;
@@ -423,7 +427,7 @@ class HyperCache
                     // For some reason it seems more performant than readfile...
                     header('X-Cache: hit,404,template_redirect');
                     echo file_get_contents($file);
-                    die();
+                    exit();
                 }
             }
         }
@@ -505,10 +509,10 @@ class HyperCache
     public function remove_dir($dir)
     {
         $dir = trailingslashit($dir);
-        $files = glob($dir.'*', GLOB_MARK);
+        $files = glob($dir.'*', \GLOB_MARK);
         if (!empty($files)) {
             foreach ($files as &$file) {
-                if (DIRECTORY_SEPARATOR == substr($file, -1)) {
+                if (\DIRECTORY_SEPARATOR == substr($file, -1)) {
                     $this->remove_dir($file);
                 } else {
                     @unlink($file);
@@ -536,7 +540,7 @@ class HyperCache
 
     public function _remove_older_than($time, $dir)
     {
-        $files = glob($dir.'*', GLOB_MARK);
+        $files = glob($dir.'*', \GLOB_MARK);
         if (!empty($files)) {
             foreach ($files as &$file) {
                 if ('/' == substr($file, -1)) {
@@ -691,13 +695,13 @@ function hyper_cache_callback($buffer)
         }
     }
 
-    @file_put_contents($lc_file, $buffer.'<!-- hyper cache '.date('Y-m-d H:i:s').' -->');
+    @file_put_contents($lc_file, $buffer.'<!-- x-cache '.date('Y-m-d H:i:s').' -->');
 
     // Saves the gzipped version
     if (isset($options['gzip'])) {
         $gzf = gzopen($lc_file.'.gz', 'wb9');
         if (false !== $gzf) {
-            gzwrite($gzf, $buffer.'<!-- hyper cache gzip '.date('Y-m-d H:i:s').' -->');
+            gzwrite($gzf, $buffer.'<!-- x-cache gzip '.date('Y-m-d H:i:s').' -->');
             gzclose($gzf);
         }
     }

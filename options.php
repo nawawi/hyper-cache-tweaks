@@ -144,7 +144,7 @@ if ($controls->is_action('reset_mobile_agents')) {
 
 function hc_size($dir)
 {
-    $files = glob($dir.'*', GLOB_MARK);
+    $files = glob($dir.'*', \GLOB_MARK);
     $size = 0;
     if (!empty($files)) {
         foreach ($files as &$file) {
@@ -199,7 +199,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
         font-size: 12px;
         text-decoration: none;
     }
-    
+
 </style>
 <script>
     jQuery(document).ready(function() {
@@ -256,8 +256,8 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
             </p>
         </div>
     <?php } ?>
-    
-    
+
+
 
 
     <?php $controls->show(); ?>
@@ -354,8 +354,6 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                             </p>
                         </td>
                     </tr>
-                    
-                    
 
                     <tr>
                         <th><?php _e('When a post is edited', 'hyper-cache-tweaks'); ?></th>
@@ -369,9 +367,6 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                         </td>
                     </tr>
 
-                 
-
-                   
                     <tr valign="top">
                         <th><?php _e('Allow browser caching', 'hyper-cache-tweaks'); ?></th>
                         <td>
@@ -384,7 +379,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                             </p>
                         </td>
                     </tr>
-                   
+
 
                     <tr valign="top">
                         <th><?php _e('HTTPS', 'hyper-cache-tweaks'); ?></th>
@@ -398,7 +393,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                         </td>
                     </tr>
 
-                   
+
                     <tr>
                         <th><?php _e('Serve expired pages to bots', 'hyper-cache-tweaks'); ?></th>
                         <td>
@@ -533,7 +528,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                     </tr>
                 </table>
             </div>
-            
+
             <div id="tabs-advanced">
                 <table class="form-table">
                     <tr>
@@ -568,7 +563,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                             </p>
                         </td>
                     </tr>
-                     
+
                     <tr>
                         <th><?php _e('Next autoclean will run in', 'hyper-cache-tweaks'); ?></th>
                         <td>
@@ -581,7 +576,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
                             </p>
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <th><?php _e('Cache folder', 'hyper-cache-tweaks'); ?></th>
                         <td>
@@ -659,7 +654,7 @@ if (!wp_next_scheduled('hyper_cache_clean')) {
 
 <?php
 
-class HyperCacheControls
+class options
 {
     public $options = null;
     public $errors = null;
@@ -679,7 +674,7 @@ class HyperCacheControls
         if (check_admin_referer('save')) {
             return true;
         }
-        die('Invalid call');
+        exit('Invalid call');
     }
 
     public function text($name, $size = 20)
